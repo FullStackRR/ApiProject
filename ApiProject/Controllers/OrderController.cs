@@ -32,7 +32,7 @@ namespace ApiProject.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public  async Task<Order> Post([FromBody] Order order) 
+        public  async Task<Order> Post([FromBody] Order order) //מחזיר שגיאה 500
         {
              return await this._orderService.Post(order);
         }
