@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="home.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="divLogin" id="enter">
+        <br />
+        <lable>שם משתמש</lable>
+
+        <input required="true" type="text" id="myName" /><br /><br />
+        <lable>סיסמה </lable>
+        <input type="password" id="myPassword" /><br /><br />
+
+        <br />
+        <button onclick="start()">התחברות</button><br /><br /><br />
+    </div>
+
+    <div id="nu">
+        <div class="divLogin" id="newUser">
+            <br />
+            <lable>שם משתמש</lable>
+            <input type="text" id="email" /><br /><br />
+            <lable>סיסמה </lable>
+            <input type="password" id="password" /><br /><br />
+            <lable>שם  </lable>
+            <input type="text" id="name" /><br /><br />
+            <button onclick="newUser()">רישום</button>
+            <button onclick="checkPassword()">בדיקת סיסמה</button>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="home.js"></script>
+</html>

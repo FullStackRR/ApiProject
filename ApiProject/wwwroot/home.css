@@ -1,0 +1,73 @@
+﻿body {
+    direction: rtl;
+  background-color:paleturquoise
+}
+#enter {
+    margin-top: 15%;
+    height: 40%;
+}
+.divLogin {
+    /* text-align: justify-all;
+    width: 20%;
+    background-color: aquamarine;
+    border-color: aquamarine;
+    border-width: 3px;
+    border-style: double;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 25%; 
+    color: teal;
+    font-size: large;*/
+    background-color: rgb(255, 255, 255);
+    max-width: 400px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+#newUser {
+    
+    margin-top: 2%;
+    height: 40%;
+}
+#nu {
+    display: none;
+}
+input {
+    margin-right: 30%;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+button {
+    /*width: 90px;
+    height: 40px;
+    background-color: aquamarine;
+    color: teal;
+    border-radius:4%;
+    margin:auto;*/
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+}
+#userDetails{
+    height:500px;
+
+}
+#wellcom{
+    text-align:center;
+    top:5px;
+    color:teal;
+    border-style:groove;
+    border-color:teal;
+    border-width:5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:100px;
+    display:none;
+}
