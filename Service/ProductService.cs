@@ -15,9 +15,9 @@ namespace Service
         {
             this._data = data;
         }
-        public async Task<IEnumerable<Product>> Get()
+        public async Task<IEnumerable<Product>> Get( int[]? categoryId, string? dir = "asc",int? fromPrice = null, int? toPrice = null,string? description = null)
         {
-            return await _data.Get();
+            return await _data.Get( categoryId, dir ,  fromPrice, toPrice, description);
         }
     }
 }

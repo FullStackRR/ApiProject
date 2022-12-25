@@ -2,6 +2,6 @@
 {
     public interface IOrderData
     {
-        Task<Order> Post(Order order);
+        Task Post(Order order);
     }
 }

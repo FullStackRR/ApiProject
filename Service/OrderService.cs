@@ -15,9 +15,11 @@ namespace Service
         {
             this._data = data;
         }
-        public Task<Order> Post(Order order)
+        public async Task Post(Order order)
         {
-            return this._data.Post(order);
+           await this._data.Post(order);
         }
+
+        
     }
 }

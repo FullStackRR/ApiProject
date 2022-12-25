@@ -13,11 +13,11 @@ namespace DataLayer
         {
             _dbContext = dbContext;
         }
-        public async Task<Order> Post(Order order)
+        public async Task Post(Order order)
         {
             await _dbContext.Orders.AddAsync(order);
             await _dbContext.SaveChangesAsync();
-            return order;
+            //return order;
         }
     }
 }
