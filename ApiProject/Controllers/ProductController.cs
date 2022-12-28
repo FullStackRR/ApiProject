@@ -17,11 +17,11 @@ namespace ApiProject.Controllers
         }
         // GET: api/<ProductController>
         [HttpGet]
-        public async Task<IEnumerable<Product>> Get([FromQuery] int[]? categoryId, [FromQuery] string? dir = "asc", [FromQuery] int? fromPrice = null, [FromQuery] int? toPrice = null, [FromQuery] string? description = null)
+        public async Task<IEnumerable<Product>> Get([FromQuery] int[]? categoryId, [FromQuery] string? dir = "asc", [FromQuery] int? fromPrice = null, [FromQuery] int? toPrice = null, [FromQuery] string? name = null)
         {
             //////לפרק לפרמטרים, ולשלוח פרמטרים בכל הניתובים
             
-            return await _productService.Get(categoryId, dir, fromPrice, toPrice, description);
+            return await _productService.Get(categoryId, dir, fromPrice, toPrice, name);
         }
 
         // GET api/<ProductController>/5

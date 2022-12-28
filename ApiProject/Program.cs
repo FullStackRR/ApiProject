@@ -1,6 +1,7 @@
-using Service;
+
 using DataLayer;
 using Microsoft.EntityFrameworkCore;
+using Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +27,7 @@ builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IOrderItemData, OrderItemData>();
 
 builder.Services.AddScoped<IPasswordService,PasswordService>();
-builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(@"Data Source=DESKTOP-E0FAPSB\SQLEXPRESS;Initial Catalog=213836612_web_api;Integrated Security=True"));
+builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(@"Data Source=SRV2\PUPILS;Initial Catalog=213836612_web_api;Integrated Security=True"));
 var app = builder.Build();
 if(app.Environment.IsDevelopment())
 {

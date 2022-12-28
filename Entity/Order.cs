@@ -17,7 +17,7 @@ namespace DataLayer
         public decimal? TotalPrice { get; set; }
         [JsonIgnore]
         public virtual User? User { get; set; } = null!;
-        [JsonIgnore]
+      
         public virtual ICollection<OrderItem>? OrderItems { get; set; }
     }
 }
