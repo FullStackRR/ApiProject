@@ -1,6 +1,10 @@
 ﻿body {
     direction: rtl;
-  background-color:paleturquoise
+    background-image: url("./backgroungHome.JPG");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    
+
 }
 #enter {
     margin-top: 15%;
