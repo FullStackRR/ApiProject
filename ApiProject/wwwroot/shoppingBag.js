@@ -1,30 +1,33 @@
-
+ο»Ώ
 drawOrderItem = (product, productIndex) => {
-    let d = document.getElementById("g")
-    alert(d.innerHTML)
-    //var clone = temp.content.cloneNode(true)
-    //clone.querySelector(".itemName").innerText = product.name
-    //clone.querySelector(".itemNumber").innerText = product.id
-    ////clone.querySelector(".description").innerText = product.description
-    ////clone.querySelector(".price").innerText = product.price
-    ////clone.querySelector(".image").src = `../img/${product.imgUrl}`
-    ///*clone.querySelector(".DeleteButton").addEventListener("click", () => deleteItem(productIndex))*/
-    //document.body.appendChild(clone)
+    let temp = document.getElementsByTagName("template")[0]
+  
+    var clone = temp.content.cloneNode(true)
+   clone.querySelector(".itemName").innerText = product.name
+   var t= clone.querySelector("img")
+    t.src = `../img/${product.imgUrl}`
+    clone.querySelector(".price").innerText = product.price
+    clone.querySelector(".availabilityColumn").innerText = "β”Χ‘ΧΧΧΧ™?"
+    //clone.querySelector(".image").style.setProperty("color", "red");
+    //clone.querySelector(".image").style.setProperty("background - image", `url(../img/${ product.imgUrl }`);// background - image: url(../img/${ product.imgUrl })
+
+    clone.querySelector(".DeleteButton").addEventListener("click", () => deleteItem(productIndex))
+    document.getElementsByTagName("tbody")[0].appendChild(clone)
+
 }
 
 //<template id="temp-row">
 //    <tr class="item-row">
 //        <td class="imageColumn"><a rel="lightbox" href="#"><div class="image"></div></a></td>
-//        <td class="descriptionColumn"><div><h3 class="itemName"></h3><h6><p class="itemNumber"></p><a class="viewLink" href="https://www.next.co.il/he/g59522s11#407223">μτψθιν περτιν</a></h6></div></td>
-//        <td class="availabilityColumn"><div>αξμΰι</div></td>
-//        <td class="totalColumn delete"><div class="expandoHeight" style="height: 99px;"><p class="price"></p><a href="#" title="μηφε λΰο λγι μδριψ ΰϊ τψιθ ζδ" class="Hide DeleteButton showText">δρψϊ τψιθ</a></div></td>
+//        <td class="descriptionColumn"><div><h3 class="itemName"></h3><h6><p class="itemNumber"></p><a class="viewLink" href="https://www.next.co.il/he/g59522s11#407223">ΧΧ¤Χ¨ΧΧ™Χ Χ Χ•Χ΅Χ¤Χ™Χ</a></h6></div></td>
+//        <td class="availabilityColumn"><div>Χ‘ΧΧΧΧ™</div></td>
+//        <td class="totalColumn delete"><div class="expandoHeight" style="height: 99px;"><p class="price"></p><a href="#" title="ΧΧ—Χ¦Χ• Χ›ΧΧ Χ›Χ“Χ™ ΧΧ”Χ΅Χ™Χ¨ ΧΧª Χ¤Χ¨Χ™Χ Χ–Χ”" class="Hide DeleteButton showText">Χ”Χ΅Χ¨Χª Χ¤Χ¨Χ™Χ</a></div></td>
 //    </tr>
 //</template>
 removeOrderItems = () => {
     let orderItems = document.getElementsByClassName("item-row");
     for (var i = orderItems.length - 1; i >= 0; i--) {
-        document.body.removeChild(orderItems[i])
-    }
+        document.getElementsByTagName("tbody")[0].appendChild(clone)    }
 
 }
 deleteItem = (productIndex) => {
@@ -58,7 +61,7 @@ serverCall = async (orderObject) => {
         })
     if (res.ok) {
         const newOrder = await res.json()
-        alert("δζξπϊκ πχμθδ αδφμηδ! ϊεγδ ωχπιϊ ΰφμιπε")
+        alert("Χ”Χ–ΧΧ ΧªΧ Χ Χ§ΧΧΧ” Χ‘Χ”Χ¦ΧΧ—Χ”! ΧªΧ•Χ“Χ” Χ©Χ§Χ Χ™Χª ΧΧ¦ΧΧ™Χ Χ•")
 
     }
     else
@@ -83,6 +86,7 @@ placeOrder = () => {
         "userId": userId,
         "date": new Date(),
         "totalPrice": totalPrice,
+
         "orderItems": orderItems
     }
     let orderString = JSON.stringify(orderObject)//

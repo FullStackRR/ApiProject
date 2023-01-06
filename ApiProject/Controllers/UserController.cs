@@ -1,5 +1,6 @@
 ﻿using DataLayer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Service;
 using System.Text.Json;
 
@@ -11,18 +12,34 @@ namespace ApiProject.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly ILogger<UserController> _logger;//ui
         private readonly IUserService _userService;
         string filePath = "./users.txt";
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, ILogger<UserController> logger)
         {
             this._userService = userService;
+            _logger = logger;
         }
 
         // GET: api/<UserControler>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> Get([FromQuery]string email, [FromQuery] string password)
         {
+
+            int x = 4;
+            int y = 0;
+            try
+            {
+                x = x / y;
+            }
+            catch
+            {
+                _logger.LogError("ccc");
+
+            }
+
+            _logger.LogInformation(email + "tried to login");
             User? theUser = await _userService.GetUser(email, password);
             if (theUser != null)
                 return Ok(new List<User>() { theUser });

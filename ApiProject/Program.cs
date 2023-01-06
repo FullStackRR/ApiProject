@@ -27,7 +27,8 @@ builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IOrderItemData, OrderItemData>();
 
 builder.Services.AddScoped<IPasswordService,PasswordService>();
-builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(@"Data Source=SRV2\PUPILS;Initial Catalog=213836612_web_api;Integrated Security=True"));
+string connectionString = builder.Configuration.GetValue<string>("ConnectionString");
+builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(connectionString));
 var app = builder.Build();
 if(app.Environment.IsDevelopment())
 {
