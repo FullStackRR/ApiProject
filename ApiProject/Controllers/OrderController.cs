@@ -1,4 +1,6 @@
-﻿using DataLayer;
+﻿using AutoMapper;
+using DataLayer;
+using DTO;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -12,9 +14,11 @@ namespace ApiProject.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
-        public OrderController(IOrderService orderService)
+        private readonly IMapper _mapper;
+        public OrderController(IOrderService orderService, IMapper mapper)
         {
             _orderService = orderService;
+            _mapper = mapper;
         }
         // GET: api/<OrderController>
         [HttpGet]
@@ -32,8 +36,9 @@ namespace ApiProject.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public  async Task Post([FromBody] Order order) //מחזיר שגיאה 500
+        public  async Task Post([FromBody] OrderDTO orderDTO) 
         {
+            Order order = _mapper.Map<OrderDTO, Order>(orderDTO);
               await this._orderService.Post(order);
         }
 

@@ -1,4 +1,6 @@
-﻿using DataLayer;
+﻿using AutoMapper;
+using DataLayer;
+using DTO;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -11,17 +13,21 @@ namespace ApiProject.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
-        public ProductController(IProductService productService)
+        private IMapper _mapper;
+        public ProductController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
         // GET: api/<ProductController>
         [HttpGet]
-        public async Task<IEnumerable<Product>> Get([FromQuery] int[]? categoryId, [FromQuery] string? dir = "asc", [FromQuery] int? fromPrice = null, [FromQuery] int? toPrice = null, [FromQuery] string? name = null)
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> Get([FromQuery] int[]? categoryId, [FromQuery] string? dir = "asc", [FromQuery] int? fromPrice = null, [FromQuery] int? toPrice = null, [FromQuery] string? name = null)
         {
             //////לפרק לפרמטרים, ולשלוח פרמטרים בכל הניתובים
-            
-            return await _productService.Get(categoryId, dir, fromPrice, toPrice, name);
+
+            IEnumerable<Product> products = await _productService.Get(categoryId, dir, fromPrice, toPrice, name);
+            IEnumerable<ProductDTO> productsDTO = _mapper.Map<IEnumerable<Product>, IEnumerable< ProductDTO > >(products);
+            return Ok(productsDTO);
         }
 
         // GET api/<ProductController>/5

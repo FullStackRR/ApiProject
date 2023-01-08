@@ -17,7 +17,7 @@ namespace DataLayer
         public async Task<IEnumerable<Category>> Get()
         {
             var categories = await (from i in _dbContext.Categories
-                                    select i).ToListAsync();
+                                    select i).Include(c=>c.Products).ToListAsync();
             return categories;
         }
     }

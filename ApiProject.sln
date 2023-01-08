@@ -5,11 +5,13 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiProject", "ApiProject\ApiProject.csproj", "{6B839835-3EBC-4190-8E2E-7712951AE100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{83CAF4F0-692F-4658-B106-9FB5003255E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{83CAF4F0-692F-4658-B106-9FB5003255E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{91BA73C9-CE84-40AF-9334-0490BF6F38CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{91BA73C9-CE84-40AF-9334-0490BF6F38CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{70999020-260C-4789-A747-CA52F61A9241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{70999020-260C-4789-A747-CA52F61A9241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{14EFDC98-D726-465E-8CF0-FFF563736560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{70999020-260C-4789-A747-CA52F61A9241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70999020-260C-4789-A747-CA52F61A9241}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70999020-260C-4789-A747-CA52F61A9241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14EFDC98-D726-465E-8CF0-FFF563736560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14EFDC98-D726-465E-8CF0-FFF563736560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14EFDC98-D726-465E-8CF0-FFF563736560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14EFDC98-D726-465E-8CF0-FFF563736560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

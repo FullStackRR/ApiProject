@@ -1,4 +1,6 @@
-﻿using DataLayer;
+﻿using AutoMapper;
+using DataLayer;
+using DTO;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -10,17 +12,21 @@ namespace ApiProject.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        private readonly ICategoryService _categoryService;  
+        private readonly IMapper _mapper;
+        public CategoryController(ICategoryService categoryService, IMapper mapper)
         {
+            _mapper = mapper;
             _categoryService = categoryService;
         }
         // GET: api/<CategoryController>
         [HttpGet]
-        public async Task<IEnumerable<Category>> Get()
+        public async Task<IEnumerable<CategoryDTO>> Get()
         {
-            IEnumerable < Category >  i=await _categoryService.Get();
-            return i;
+
+            IEnumerable < Category >  categories=await _categoryService.Get();
+            IEnumerable<CategoryDTO> categoryDTOs = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDTO>>(categories);
+            return categoryDTOs;
         }
 
         // GET api/<CategoryController>/5

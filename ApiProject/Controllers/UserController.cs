@@ -1,4 +1,6 @@
-﻿using DataLayer;
+﻿using AutoMapper;
+using DataLayer;
+using DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Service;
@@ -14,35 +16,26 @@ namespace ApiProject.Controllers
     {
         private readonly ILogger<UserController> _logger;//ui
         private readonly IUserService _userService;
-        string filePath = "./users.txt";
-
-        public UserController(IUserService userService, ILogger<UserController> logger)
+        private readonly IMapper _mapper;
+     
+        public UserController(IUserService userService, ILogger<UserController> logger, IMapper mapper)
         {
-            this._userService = userService;
+            _userService = userService;
             _logger = logger;
+            _mapper = mapper;
         }
 
         // GET: api/<UserControler>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> Get([FromQuery]string email, [FromQuery] string password)
+        public async Task<ActionResult<IEnumerable<UserDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
-
-            int x = 4;
-            int y = 0;
-            try
-            {
-                x = x / y;
-            }
-            catch
-            {
-                _logger.LogError("ccc");
-
-            }
 
             _logger.LogInformation(email + "tried to login");
             User? theUser = await _userService.GetUser(email, password);
-            if (theUser != null)
-                return Ok(new List<User>() { theUser });
+            if (theUser != null) {
+                UserDTO user = _mapper.Map<User, UserDTO>(theUser);
+                return Ok(new List<UserDTO>() { user });
+            }
             else
                 return NotFound();
           

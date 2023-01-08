@@ -19,7 +19,7 @@ namespace DataLayer
         public int? GuarantyMonth { get; set; }
         public string? CountryOfProduction { get; set; }
 
-        public virtual Category ?Category { get; set; } = null!;
-        public virtual ICollection<OrderItem>? OrderItems { get; set; }
+        public virtual Category Category { get; set; } = null!;
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

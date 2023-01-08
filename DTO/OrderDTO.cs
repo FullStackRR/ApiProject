@@ -1,23 +1,19 @@
-﻿using System;
+﻿using DataLayer;
+using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DataLayer
+namespace DTO
 {
-    public partial class Order
+    public class OrderDTO
     {
-        public Order()
-        {
-            OrderItems = new HashSet<OrderItem>();
-        }
-
         public int Id { get; set; }
         public int UserId { get; set; }
         public DateTime? Date { get; set; }
         public decimal? TotalPrice { get; set; }
-        
         public virtual User? User { get; set; } = null!;
-      
         public virtual ICollection<OrderItem>? OrderItems { get; set; }
     }
 }

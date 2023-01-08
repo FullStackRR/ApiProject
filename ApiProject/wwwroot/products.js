@@ -18,6 +18,7 @@ drawCategory = (category) => {
     clone.querySelector(".opt").id = category.id
     clone.querySelector(".opt").value = category.id
     clone.querySelector(".OptionName").innerText = category.name
+    clone.querySelector(".Count").innerText = category.amount
     clone.querySelector(".opt").addEventListener("change", filterProducts)
     document.getElementById("categoryList").appendChild(clone)
 
@@ -36,9 +37,9 @@ drawProduct = (product) => {
     var temp = document.getElementById("temp-card");
     var clone = temp.content.cloneNode(true)
     clone.querySelector("h1").innerText = product.name
-    clone.querySelector(".category").innerText = product.categoryId//name!!!
+    clone.querySelector(".category").innerText = product.categoryName//name!!!
     clone.querySelector(".description").innerText = product.description
-    clone.querySelector(".price").innerText = product.price
+    clone.querySelector(".price").innerText = product.price +"₪"
     clone.querySelector("img").src = `../img/${product.imgUrl}`
     clone.querySelector("button").addEventListener("click", () => addToBag(product))
     document.body.appendChild(clone)

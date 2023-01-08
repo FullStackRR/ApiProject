@@ -20,10 +20,10 @@ namespace DataLayer
             var query = _dbContext.Products.Where(product =>
           (description == null ? (true) : (product.Name.Contains(description)))
           && (fromPrice == null ? (true) : (product.Price >= fromPrice))
-          && (toPrice == null ? (true) : (product.Price<= toPrice))
-          && ((categoryId.Length==0) ? (true) : (categoryId.Contains(product.CategoryId))))
-                .OrderBy(product=>product.Price); 
-            List<Product> products = await query.ToListAsync();
+          && (toPrice == null ? (true) : (product.Price <= toPrice))
+          && ((categoryId.Length == 0) ? (true) : (categoryId.Contains(product.CategoryId))))
+                .OrderBy(product => product.Price);
+            List<Product> products = await query.Include(product=>product.Category).ToListAsync();
             return products;
         }
     }

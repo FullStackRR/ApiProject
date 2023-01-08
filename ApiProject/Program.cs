@@ -29,6 +29,7 @@ builder.Services.AddScoped<IOrderItemData, OrderItemData>();
 builder.Services.AddScoped<IPasswordService,PasswordService>();
 string connectionString = builder.Configuration.GetValue<string>("ConnectionString");
 builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(connectionString));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 if(app.Environment.IsDevelopment())
 {
