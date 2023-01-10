@@ -29,7 +29,15 @@ namespace ApiProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
-
+            try
+            {
+                int k = 0;
+                var x = 4 / k;
+            }
+            catch
+            {
+                _logger.LogError("math");
+            }
             _logger.LogInformation(email + "tried to login");
             User? theUser = await _userService.GetUser(email, password);
             if (theUser != null) {
