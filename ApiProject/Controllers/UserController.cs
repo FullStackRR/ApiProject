@@ -67,7 +67,7 @@ namespace ApiProject.Controllers
         }
 
         // PUT api/<UserControler>/5
-        [HttpPut("{id}")]///yiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyiyi
+        [HttpPut("{id}")]///yiyiyiyiy  ///////////////////////////////////////////////
         public async Task Put(int id, [FromBody] User theUser)
         {
             await _userService.UpdateUser(id, theUser);
