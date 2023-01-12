@@ -68,11 +68,15 @@ namespace ApiProject.Controllers
 
         // PUT api/<UserControler>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] User theUser)
+        public async Task Put(int id, [FromBody] User theUser)
         {
-            _userService.UpdateUser(id, theUser);
+            await _userService.UpdateUser(id, theUser);
             
         }
+
+
+       
+
 
         // DELETE api/<UserControler>/5
         [HttpDelete("{id}")]

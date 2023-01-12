@@ -19,9 +19,9 @@ namespace Service
             return _data.Post(user);
         }
 
-        public void UpdateUser(int id, User theUser)
+        public async Task UpdateUser(int id, User theUser)
         {
-            _data.updateUser(id, theUser);
+           await _data.updateUser(id, theUser);
         }
     }
 }

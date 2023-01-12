@@ -5,6 +5,6 @@ namespace DataLayer
     {
         Task<User?> GetUser(string email, string password);
         Task<User> Post(User user);
-        void updateUser(int id, User theUser);
+        Task updateUser(int id, User theUser);
     }
 }

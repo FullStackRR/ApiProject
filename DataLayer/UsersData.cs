@@ -26,15 +26,21 @@ namespace DataLayer
             await _dbContext.SaveChangesAsync();
             return user;
         }
-        public async void updateUser(int id, User updated)
-        {
-            var userToUpdate = _dbContext.Users.Find(id);
-            if (userToUpdate == null)
-                return;
-            User u = userToUpdate;
-            _dbContext.Entry(u).CurrentValues.SetValues(updated);
-          _dbContext.SaveChanges();
+        //public async void updateUser(int id, User updated)
+        //{
+        //    var userToUpdate = _dbContext.Users.Find(id);
+        //    if (userToUpdate == null)
+        //        return;
+        //    User u = userToUpdate;
+        //    _dbContext.Entry(u).CurrentValues.SetValues(updated);
+        //  _dbContext.SaveChanges();
 
+        //}
+
+        public async Task updateUser(int userId, User newUser)
+        {
+            _dbContext.Users.Update(newUser);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
