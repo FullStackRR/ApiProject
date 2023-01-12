@@ -13,7 +13,6 @@ namespace DTO
         public int UserId { get; set; }
         public DateTime? Date { get; set; }
         public decimal? TotalPrice { get; set; }
-        public virtual User? User { get; set; } = null!;
-        public virtual ICollection<OrderItem>? OrderItems { get; set; }
+        public virtual ICollection<OrderItemDTO>? OrderItems { get; set; }
     }
 }
