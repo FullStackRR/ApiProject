@@ -23,7 +23,6 @@ namespace ApiProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> Get([FromQuery] int[]? categoryId, [FromQuery] string? dir = "asc", [FromQuery] int? fromPrice = null, [FromQuery] int? toPrice = null, [FromQuery] string? name = null)
         {
-            //////לפרק לפרמטרים, ולשלוח פרמטרים בכל הניתובים
 
             IEnumerable<Product> products = await _productService.Get(categoryId, dir, fromPrice, toPrice, name);
             IEnumerable<ProductDTO> productsDTO = _mapper.Map<IEnumerable<Product>, IEnumerable< ProductDTO > >(products);
