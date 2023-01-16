@@ -2,7 +2,6 @@
 using DataLayer;
 using DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Service;
 using System.Text.Json;
 
@@ -29,15 +28,10 @@ namespace ApiProject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
-            try
-            {
-                int k = 0;
-                var x = 4 / k;
-            }
-            catch
-            {
-                _logger.LogError("math");
-            }
+
+            throw new Exception();
+         
+
             _logger.LogInformation(email + "tried to login");
             User? theUser = await _userService.GetUser(email, password);
             if (theUser != null) {

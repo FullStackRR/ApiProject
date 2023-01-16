@@ -11,13 +11,18 @@ async function start() {
         sessionStorage.setItem('details', JSON.stringify(ans2));
         window.location.href = "userDetails.html";
     }
-    else {
+
+    else if (ans.status == 404) {
         let x = confirm("  משתמש לא קיים במערכת, האם ברצונך להרשם?");
         if (x) {
             document.getElementById("nu").style.setProperty("display", "block");
 
         }
     }
+    else {
+        window.location.href = "error.html";
+    }
+  
 }
 async function newUser() {
     alert("hello")

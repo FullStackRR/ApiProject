@@ -149,8 +149,10 @@ namespace DataLayer
                 entity.Property(e => e.Password).HasColumnName("password");
             });
 
+
             OnModelCreatingPartial(modelBuilder);
         }
+
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
