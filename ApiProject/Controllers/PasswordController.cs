@@ -34,6 +34,7 @@ namespace ApiProject.Controllers
         [HttpPost]
         public ActionResult<int> Post([FromBody] string password)
         {
+            throw new Exception();
            return Ok(this._passwordService.CheckPassword(password));
 
         }

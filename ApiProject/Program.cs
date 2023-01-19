@@ -27,6 +27,9 @@ builder.Services.AddScoped<IProductData, ProductData>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IOrderItemData, OrderItemData>();
 
+builder.Services.AddTransient<IRatingService, RatingService>();
+builder.Services.AddTransient<IRatingMiddlewareData, RatingMiddlewareData>();
+
 builder.Services.AddScoped<IPasswordService,PasswordService>();
 string connectionString = builder.Configuration.GetValue<string>("ConnectionString");
 builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(connectionString));

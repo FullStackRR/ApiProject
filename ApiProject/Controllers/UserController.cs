@@ -29,7 +29,7 @@ namespace ApiProject.Controllers
         public async Task<ActionResult<IEnumerable<UserDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
 
-            throw new Exception();
+            //throw new Exception();
          
 
             _logger.LogInformation(email + "tried to login");
