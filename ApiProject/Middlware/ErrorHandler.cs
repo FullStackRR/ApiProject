@@ -23,7 +23,7 @@ namespace ApiProject.Middlware
             }
             catch (Exception exception)
             {
-                logger.LogError("Error Cought in Middleware" + exception.Message + exception.StackTrace);
+                logger.LogError("Error Cought in Middleware");
                 httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 await httpContext.Response.WriteAsync("bad error");
 

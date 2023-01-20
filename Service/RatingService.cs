@@ -15,9 +15,8 @@ namespace Service
         {
             _ratingData = r;
         }
-        public void SaveDetails(string method, string host, string path)
+        public void SaveDetails(Rating rating)
         {
-            Rating rating = new Rating() { Method = method, Host = host, Path = path };
             _ratingData.save(rating);
         }
     }

@@ -32,7 +32,7 @@ namespace ApiProject.Controllers
             //throw new Exception();
          
 
-            _logger.LogInformation(email + "tried to login");
+           // _logger.LogInformation("tried to login");
             User? theUser = await _userService.GetUser(email, password);
             if (theUser != null) {
                 UserDTO user = _mapper.Map<User, UserDTO>(theUser);

@@ -1,7 +1,9 @@
-﻿namespace Service
+﻿using Entity;
+
+namespace Service
 {
     public interface IRatingService
     {
-        void SaveDetails(string method, string host,string path);
+        void SaveDetails(Rating rating );
     }
 }

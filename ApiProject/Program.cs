@@ -2,6 +2,7 @@
 using ApiProject.Middlware;
 using DataLayer;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,10 +32,11 @@ builder.Services.AddTransient<IRatingService, RatingService>();
 builder.Services.AddTransient<IRatingMiddlewareData, RatingMiddlewareData>();
 
 builder.Services.AddScoped<IPasswordService,PasswordService>();
-string connectionString = builder.Configuration.GetValue<string>("ConnectionString");
+string connectionString = builder.Configuration.GetConnectionString("school");
+//string connectionString = builder.Configuration.GetValue<string>("ConnectionString");
 builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(connectionString));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Host.UseNLog();
 var app = builder.Build();
 
 app.UseErrorHandler();

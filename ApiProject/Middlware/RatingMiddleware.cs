@@ -9,11 +9,11 @@ using Service;
 namespace ApiProject.Middlware
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-    public class Rating
+    public class RatingMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IRatingService _ratingService;
-        public Rating(RequestDelegate next ,IRatingService r)
+        public RatingMiddleware(RequestDelegate next ,IRatingService r)
         {
             _ratingService = r;
             _next = next;
@@ -24,10 +24,12 @@ namespace ApiProject.Middlware
             string method = httpContext.Request.Method;
             string host = httpContext.Request.Host.ToString();
             string path = httpContext.Request.Path;
-            //DateTime recordDate = new DateTime().;
+            
+            DateTime recordDate = new DateTime();
+
             //string referer = httpContext.Request.;
-            //Rating rating = new Rating() { };//כנראה אי אפשר ליצור כזה אוביקט במידל...
-            _ratingService.SaveDetails(method,host, path);
+            Rating rating = new Rating() { Method = method, Host = host, Path = path,RecordDate=recordDate };
+            _ratingService.SaveDetails(rating);
 
             return _next(httpContext);
         }
@@ -38,7 +40,7 @@ namespace ApiProject.Middlware
     {
         public static IApplicationBuilder UseRating(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<Rating>();
+            return builder.UseMiddleware<RatingMiddleware>();
         }
     }
 }
