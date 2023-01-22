@@ -39,16 +39,7 @@ namespace ApiProject.Controllers
 
         }
 
-        // PUT api/<PasswordController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PasswordController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
+   
     }
 }

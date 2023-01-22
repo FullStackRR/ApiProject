@@ -132,8 +132,15 @@ filterProducts = () => {
 window.addEventListener("load", getProducts("https://localhost:44368/Api/Product"))
 window.addEventListener("load", getCategories())
 window.addEventListener("load", () => {
-    let bag = []
+    let theBag = sessionStorage.getItem("bag")
+    if (theBag == null) {
+        let bag = [];
+    
     theBag = JSON.stringify(bag);
-    sessionStorage.setItem("bag",theBag)
+        sessionStorage.setItem("bag", theBag)
+    }
+    sum = JSON.parse(theBag).length
 
+    let itemsCountText = document.getElementById("ItemsCountText")
+    itemsCountText.innerHTML = sum
 })

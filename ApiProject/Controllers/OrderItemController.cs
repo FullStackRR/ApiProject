@@ -15,37 +15,13 @@ namespace ApiProject.Controllers
         {
             _orderItemService = orderItemService;
         }
-        //// GET: api/<OrderItemController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        //// GET api/<OrderItemController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/<OrderItemController>
+        
         [HttpPost]
         public async Task Post([FromBody] OrderItem orderItem)
         {
           await _orderItemService.Post(orderItem);
         }
 
-        //// PUT api/<OrderItemController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<OrderItemController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+    
     }
 }
