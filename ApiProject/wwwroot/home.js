@@ -43,8 +43,10 @@ async function newUser() {
         alert("נוסף בהצלחה למערכת  " + theNewUser.name)
 
     }
-    else
+    else {
+        alert("something went wrong");
         throw new Error("failed, please try later");
+    }
 }
 
 async function checkPassword() {
@@ -57,9 +59,8 @@ async function checkPassword() {
             body: JSON.stringify(password)
         })
     if (res.ok) {
-        let res2 = await res.json()
-        let h = 6;
-        alert(res2)
+        let res2 = await res.json();
+        alert(res2);
     }
     
 }

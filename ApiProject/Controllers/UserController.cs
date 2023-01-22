@@ -16,12 +16,14 @@ namespace ApiProject.Controllers
         private readonly ILogger<UserController> _logger;//ui
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
-     
-        public UserController(IUserService userService, ILogger<UserController> logger, IMapper mapper)
+        private readonly IPasswordService _passwordService;
+
+        public UserController(IUserService userService, ILogger<UserController> logger, IMapper mapper,IPasswordService passwordService)
         {
             _userService = userService;
             _logger = logger;
             _mapper = mapper;
+            _passwordService = passwordService;
         }
 
         // GET: api/<UserControler>
@@ -29,7 +31,6 @@ namespace ApiProject.Controllers
         public async Task<ActionResult<IEnumerable<UserDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
 
-            //throw new Exception();
          
 
            // _logger.LogInformation("tried to login");
@@ -54,6 +55,11 @@ namespace ApiProject.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> Post([FromBody] User user)
         {
+            int level = _passwordService.CheckPassword(user.Password);
+            if(level <4)
+            {
+                return BadRequest();
+            }
             User userAdded = await _userService.Post(user);
             if(userAdded!=null)
                 return CreatedAtAction(nameof(Get), new { id = user.Id }, user);

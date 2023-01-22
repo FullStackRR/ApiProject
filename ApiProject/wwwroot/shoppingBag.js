@@ -8,9 +8,6 @@ drawOrderItem = (product, productIndex) => {
     t.src = `../img/${product.imgUrl}`
     clone.querySelector(".price").innerText = product.price
     clone.querySelector(".availabilityColumn").innerText = "✔במלאי?"
-    //clone.querySelector(".image").style.setProperty("color", "red");
-    //clone.querySelector(".image").style.setProperty("background - image", `url(../img/${ product.imgUrl }`);// background - image: url(../img/${ product.imgUrl })
-
     clone.querySelector(".DeleteButton").addEventListener("click", () => deleteItem(productIndex))
     document.getElementsByTagName("tbody")[0].appendChild(clone)
 
@@ -44,11 +41,18 @@ deleteItem = (productIndex) => {
     drawOrder()
 }
 drawOrder = () => {
+    let sum = 0;
+    let count = 0;
     let orderJson = sessionStorage.getItem("bag")
     let order = JSON.parse(orderJson)
     for (var i = 0; i < order.length; i++) {
         drawOrderItem(order[i], i)
+        count++;
+        sum += order[i].price
     }
+    document.getElementById("totalAmount").innerHTML = sum;
+    document.getElementById("itemCount").innerHTML = count;
+
 
 }
 

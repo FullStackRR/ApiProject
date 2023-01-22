@@ -28,6 +28,7 @@ builder.Services.AddScoped<IProductData, ProductData>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IOrderItemData, OrderItemData>();
 
+
 builder.Services.AddTransient<IRatingService, RatingService>();
 builder.Services.AddTransient<IRatingMiddlewareData, RatingMiddlewareData>();
 

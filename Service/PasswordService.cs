@@ -11,7 +11,7 @@ namespace Service
         public int CheckPassword(string password)
         {
 
-            return 1;
+            return 8;
         }
     }
 }
