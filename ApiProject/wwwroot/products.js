@@ -1,6 +1,5 @@
 ﻿/// <reference path="home.js" />
 addToBag = (product) => {
-    //let prodString = JSON.stringify(product)
     let bag = sessionStorage.getItem("bag")
     let theBag = JSON.parse(bag)
     theBag.push(product)

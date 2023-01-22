@@ -9,7 +9,7 @@ async function start() {
         let x = 1;
         alert("ברוך הבא " + ans2[0].name);
         sessionStorage.setItem('details', JSON.stringify(ans2));
-        window.location.href = "userDetails.html";
+        window.location.href = "products.html";
     }
 
     else if (ans.status == 404) {
