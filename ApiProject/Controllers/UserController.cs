@@ -53,8 +53,10 @@ namespace ApiProject.Controllers
 
         // POST api/<UserControler>
         [HttpPost]
-        public async Task<ActionResult<User>> Post([FromBody] User user)
+        public async Task<ActionResult<User>> Post([FromBody] UserDTO newUser)
         {
+            User user = _mapper.Map<UserDTO, User>(newUser);
+
             int level = _passwordService.CheckPassword(user.Password);
             if(level <4)
             {
