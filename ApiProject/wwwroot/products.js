@@ -135,12 +135,11 @@ window.addEventListener("load", () => {
     let theBag = sessionStorage.getItem("bag")
     if (theBag == null) {
         let bag = [];
-    
-    theBag = JSON.stringify(bag);
+        theBag = JSON.stringify(bag);
         sessionStorage.setItem("bag", theBag)
     }
-    sum = JSON.parse(theBag).length
+    sumInCart = JSON.parse(theBag).length
 
     let itemsCountText = document.getElementById("ItemsCountText")
-    itemsCountText.innerHTML = sum
+    itemsCountText.innerHTML = sumInCart
 })
