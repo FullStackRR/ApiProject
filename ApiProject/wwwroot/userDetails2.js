@@ -1,13 +1,13 @@
-﻿var details = JSON.parse(sessionStorage.getItem('details'));
-var name = details[0].name;
-var email = details[0].email;
-var password = details[0].password;
+﻿
 let item;
 
-function tmp() {
+function initDetails() {
+    var details = JSON.parse(sessionStorage.getItem('details'));
+    var name = details[0].name;
+    var email = details[0].email;
+    var password = "הכנס סיסמא חדשה ";
     item = document.getElementById("wellcom");
-    item.innerHTML = `   שלום ל${name} אנו שמחים לשרת אותך `;
-    //parent.appendChild(item);
+    item.innerHTML = `   שלום ל${name}  `;
     let n = document.getElementById('name');
     n.setAttribute("value", name);
     let n1 = document.getElementById('email');
@@ -19,7 +19,7 @@ function tmp() {
 
 
 }
-tmp();
+
 async function update() {
 
     const n = document.getElementById("name").value;
@@ -35,3 +35,4 @@ async function update() {
         alert("עודכן בהצלחה");
 
 }
+window.addEventListener("load", initDetails)

@@ -28,7 +28,7 @@ namespace ApiProject.Controllers
 
         // GET: api/<UserControler>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> Get([FromQuery]string email, [FromQuery] string password)
+        public async Task<ActionResult<IEnumerable<UserWithOutPasswordDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
 
          
@@ -36,8 +36,8 @@ namespace ApiProject.Controllers
            // _logger.LogInformation("tried to login");
             User? theUser = await _userService.GetUser(email, password);
             if (theUser != null) {
-                UserDTO user = _mapper.Map<User, UserDTO>(theUser);
-                return Ok(new List<UserDTO>() { user });
+                UserWithOutPasswordDTO user = _mapper.Map<User, UserWithOutPasswordDTO>(theUser);
+                return Ok(new List<UserWithOutPasswordDTO>() { user });
             }
             else
                 return NotFound();
@@ -53,7 +53,7 @@ namespace ApiProject.Controllers
 
         // POST api/<UserControler>
         [HttpPost]
-        public async Task<ActionResult<User>> Post([FromBody] UserDTO newUser)
+        public async Task<ActionResult<UserWithOutPasswordDTO>> Post([FromBody] UserDTO newUser)
         {
             User user = _mapper.Map<UserDTO, User>(newUser);
 
@@ -64,7 +64,11 @@ namespace ApiProject.Controllers
             }
             User userAdded = await _userService.Post(user);
             if(userAdded!=null)
-                return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
+            {
+                UserWithOutPasswordDTO userToReturn = _mapper.Map<User,UserWithOutPasswordDTO>(userAdded);
+
+                return CreatedAtAction(nameof(Get), new { id = user.Id }, userToReturn);
+            }
             return NotFound();//change to not created!!!!!!!!!!!!!!
         }
 
