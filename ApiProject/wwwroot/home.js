@@ -25,25 +25,27 @@ async function newUser() {
     const n = document.getElementById("name").value;
     const p = document.getElementById("password").value;
     const e = document.getElementById("email").value;
-    if (e.indexOf("@") < 0 || e.indexOf(".") < e.indexOf("@")+2 )
+    if (e.indexOf("@") < 0 || e.indexOf(".") < e.indexOf("@") + 2 || n.length > 100 || n.length < 2)
         alert("wrong")
-    newUser = { "id": 0, "name": n, "password": p, "email": e };
-
-    alert(newUser.name);
-    const res = await fetch("https://localhost:44368/Api/User",
-        {
-            headers: { "content-type": "application/json" },
-            method: 'POST',
-            body: JSON.stringify(newUser)
-        })
-    if (res.status == 201) {
-        const theNewUser = await res.json()
-        alert("נוסף בהצלחה למערכת  " + theNewUser.name)
-
-    }
     else {
-        alert("something went wrong");
-        throw new Error("failed, please try later");
+        newUser = { "id": 0, "name": n, "password": p, "email": e };
+
+        alert(newUser.name);
+        const res = await fetch("https://localhost:44368/Api/User",
+            {
+                headers: { "content-type": "application/json" },
+                method: 'POST',
+                body: JSON.stringify(newUser)
+            })
+        if (res.status == 201) {
+            const theNewUser = await res.json()
+            alert("נוסף בהצלחה למערכת  " + theNewUser.name)
+
+        }
+        else {
+            alert("something went wrong");
+            throw new Error("failed, please try later");
+        }
     }
 }
 
