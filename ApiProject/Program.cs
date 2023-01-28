@@ -52,6 +52,7 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+app.UseCacheMiddleware();
 app.UseStaticFiles();
 
 app.UseAuthorization();

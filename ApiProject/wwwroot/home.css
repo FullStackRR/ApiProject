@@ -37,9 +37,7 @@
     margin-top: 2%;
     height: 40%;
 }
-#nu {
-    display: none;
-}
+
 input {
     margin-right: 30%;
     border-radius: 20px;
@@ -72,6 +70,6 @@ button {
     border-color:teal;
     border-width:5px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size:100px;
+    font-size:50px;
     display:none;
 }

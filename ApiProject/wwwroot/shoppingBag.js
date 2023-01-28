@@ -65,7 +65,7 @@ serverCall = async (orderObject) => {
         })
     if (res.ok) {
         const newOrder = await res.json()
-        alert("הזמנתך נקלטה בהצלחה! תודה שקנית אצלינו")
+        alert(" הזמנתך נקלטה בהצלחה! תודה שקנית אצלינו\n מספר ההזמנה שלך:" + newOrder.id)
 
     }
     else

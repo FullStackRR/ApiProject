@@ -33,7 +33,7 @@ namespace ApiProject.Controllers
 
          
 
-           // _logger.LogInformation("tried to login");
+          _logger.LogInformation("tried to login");
             User? theUser = await _userService.GetUser(email, password);
             if (theUser != null) {
                 UserWithOutPasswordDTO user = _mapper.Map<User, UserWithOutPasswordDTO>(theUser);

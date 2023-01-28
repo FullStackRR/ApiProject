@@ -6,7 +6,7 @@ async function start() {
     const ans = await fetch(url);
     if (ans.ok) {
         const ans2 = await ans.json();
-        let x = 1;
+ 
         alert("ברוך הבא " + ans2[0].name);
         sessionStorage.setItem('details', JSON.stringify(ans2));
         window.location.href = "products.html";
@@ -14,10 +14,6 @@ async function start() {
 
     else if (ans.status == 404) {
         let x = confirm("  משתמש לא קיים במערכת, האם ברצונך להרשם?");
-        if (x) {
-            document.getElementById("nu").style.setProperty("display", "block");
-
-        }
     }
     else {
         window.location.href = "error.html";
@@ -29,6 +25,8 @@ async function newUser() {
     const n = document.getElementById("name").value;
     const p = document.getElementById("password").value;
     const e = document.getElementById("email").value;
+    if (e.indexOf("@") < 0 || e.indexOf(".") < e.indexOf("@")+2 )
+        alert("wrong")
     newUser = { "id": 0, "name": n, "password": p, "email": e };
 
     alert(newUser.name);
