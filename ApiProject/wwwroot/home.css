@@ -1,6 +1,6 @@
 ﻿body {
     direction: rtl;
-    background-image: url("./backgroungHome.JPG");
+    background-image: url("./back.JPG");
     background-repeat:no-repeat;
     background-attachment:fixed;
     
@@ -54,7 +54,7 @@ button {
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #5791ff;
+    background-color: rgb(61, 27, 3);
     border: none;
     color: white;
 }
