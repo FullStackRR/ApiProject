@@ -25,8 +25,17 @@ async function newUser() {
     const n = document.getElementById("name").value;
     const p = document.getElementById("password").value;
     const e = document.getElementById("email").value;
-    if (e.indexOf("@") < 0 || e.indexOf(".") < e.indexOf("@") + 2 || n.length > 100 || n.length < 2)
-        alert("wrong")
+    if (e.indexOf("@") < 0 || e.indexOf(".") < e.indexOf("@") + 2 || n.length > 100 || n.length < 2) {
+        let a = document.createElement("div");
+        a.innerText = "email address is not valid";
+        document.getElementById("newUser").appendChild(a);
+    }
+    else if (checkPassword(p) < 3){
+        let p = document.createElement("div");
+        p.innerText = "password is not strong";
+        document.getElementById("newUser").appendChild(a);
+    }
+        
     else {
         newUser = { "id": 0, "name": n, "password": p, "email": e };
 
@@ -62,5 +71,6 @@ async function checkPassword() {
         let res2 = await res.json();
         alert(res2);
     }
+    return res2;
     
 }

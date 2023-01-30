@@ -39,7 +39,7 @@ builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSql
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Host.UseNLog();
 var app = builder.Build();
-
+app.UseCacheMiddleware();
 app.UseErrorHandler();
 
 if (app.Environment.IsDevelopment())
@@ -52,7 +52,7 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
-app.UseCacheMiddleware();
+
 app.UseStaticFiles();
 
 app.UseAuthorization();
