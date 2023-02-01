@@ -33,13 +33,13 @@ builder.Services.AddTransient<IRatingService, RatingService>();
 builder.Services.AddTransient<IRatingMiddlewareData, RatingMiddlewareData>();
 
 builder.Services.AddScoped<IPasswordService,PasswordService>();
-string connectionString = builder.Configuration.GetConnectionString("school");
+string connectionString = builder.Configuration.GetConnectionString("home");
 //string connectionString = builder.Configuration.GetValue<string>("ConnectionString");
 builder.Services.AddDbContext<_213836612_web_apiContext>(options=>options.UseSqlServer(connectionString));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Host.UseNLog();
 var app = builder.Build();
-app.UseCacheMiddleware();
+
 app.UseErrorHandler();
 
 if (app.Environment.IsDevelopment())
@@ -52,7 +52,7 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
-
+app.UseCacheMiddleware();
 app.UseStaticFiles();
 
 app.UseAuthorization();
