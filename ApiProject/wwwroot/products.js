@@ -126,10 +126,7 @@ filterProducts = () => {
 
     getProducts(url)
 }
-
-window.addEventListener("load", getProducts("https://localhost:44368/Api/Product"))
-window.addEventListener("load", getCategories())
-window.addEventListener("load", () => {
+function init() {
     let theBag = sessionStorage.getItem("bag")
     if (theBag == null) {
         let bag = [];
@@ -140,4 +137,8 @@ window.addEventListener("load", () => {
 
     let itemsCountText = document.getElementById("ItemsCountText")
     itemsCountText.innerHTML = sumInCart
-})
+}
+
+window.addEventListener("load", getProducts("https://localhost:44368/Api/Product"))
+window.addEventListener("load", getCategories());
+window.addEventListener("load", init());

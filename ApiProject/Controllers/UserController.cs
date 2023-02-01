@@ -59,7 +59,7 @@ namespace ApiProject.Controllers
             User user = _mapper.Map<UserDTO, User>(newUser);
 
             int level = _passwordService.CheckPassword(user.Password);
-            if(level <4)
+            if(level <3)
             {
                 return BadRequest();
             }
@@ -70,7 +70,7 @@ namespace ApiProject.Controllers
 
                 return CreatedAtAction(nameof(Get), new { id = user.Id }, userToReturn);
             }
-            return NotFound();//change to not created!!!!!!!!!!!!!!
+            return NotFound();
         }
 
         // PUT api/<UserControler>/5

@@ -16,19 +16,8 @@ namespace ApiProject.Controllers
             this._passwordService = passwordService;
 
         }
-        // GET: api/<PasswordController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+     
 
-        // GET api/<PasswordController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<PasswordController>
         [HttpPost]

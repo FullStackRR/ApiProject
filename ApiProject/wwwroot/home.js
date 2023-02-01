@@ -13,7 +13,7 @@ async function start() {
     }
 
     else if (ans.status == 404) {
-        let x = confirm("  משתמש לא קיים במערכת, האם ברצונך להרשם?");
+        alert("  משתמש לא קיים במערכת, אנא הרשם  ?");
     }
     else {
         window.location.href = "error.html";
@@ -24,7 +24,10 @@ async function newUser() {
     const n = document.getElementById("name").value;
     const p = document.getElementById("password").value;
     const e = document.getElementById("email").value;
-    if (nameValidations(n) && passwordValidation(p) && emailValidation(e)) {
+    let passwordOk = await passwordValidation(p);
+    let emailOk = emailValidation(e);
+    let nameOk = nameValidations(n);
+    if (passwordOk && emailOk && nameOk ) {
         newUser = { "id": 0, "name": n, "password": p, "email": e };
 
         const res = await fetch("https://localhost:44368/Api/User",
@@ -60,7 +63,8 @@ async function newUser() {
     }
     async function passwordValidation(password) {
         var score = await checkPassword(password);
-         if (await score < 3) {
+        let level = await score * 1;
+         if (level < 3) {
             document.getElementById("passwordValidation").innerText = "סיסמא לא חזקה"
             return false;
         }
@@ -78,9 +82,10 @@ async function newUser() {
             })
         if (res.ok) {
             let res2 = await res.json();
-            alert(res2);
+            return res2;
         }
-        return res2;
+        return 0;
+       
 
     }
 }

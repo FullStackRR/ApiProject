@@ -20,13 +20,12 @@ namespace DataLayer
         }
         public void save(Rating rating)
         {
-            string _connctionString = this.config.GetConnectionString("school");
+            string _connctionString = this.config.GetConnectionString("home");
             string queary = "insert into RATING (METHOD ,HOST ,PATH ) values(@method, @host, @path) ";
             using (SqlConnection connection = new SqlConnection(_connctionString))
             using (SqlCommand command = new SqlCommand(queary, connection))
             {
-                //command.Parameters.Add("@date", SqlDbType.DateTime);
-                //command.Parameters["@date"].Value = rating.recordDate; 
+               
                 command.Parameters.Add("@method", SqlDbType.NChar);
                 command.Parameters["@method"].Value = rating.Method;
                 command.Parameters.Add("@host", SqlDbType.NVarChar);

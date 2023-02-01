@@ -29,11 +29,5 @@ namespace ApiProject.Controllers
             return categoryDTOs;
         }
 
-        // GET api/<CategoryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
     }
 }
