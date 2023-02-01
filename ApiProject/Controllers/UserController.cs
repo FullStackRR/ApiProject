@@ -31,6 +31,7 @@ namespace ApiProject.Controllers
         public async Task<ActionResult<IEnumerable<UserWithOutPasswordDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
 
+
          
 
           _logger.LogInformation("tried to login");
