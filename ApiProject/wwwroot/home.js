@@ -21,25 +21,12 @@ async function start() {
   
 }
 async function newUser() {
-    alert("hello")
     const n = document.getElementById("name").value;
     const p = document.getElementById("password").value;
     const e = document.getElementById("email").value;
-    if (e.indexOf("@") < 0 || e.indexOf(".") < e.indexOf("@") + 2 || n.length > 100 || n.length < 2) {
-        let a = document.createElement("div");
-        a.innerText = "email address is not valid";
-        document.getElementById("newUser").appendChild(a);
-    }
-    else if (checkPassword(p) < 3){
-        let p = document.createElement("div");
-        p.innerText = "password is not strong";
-        document.getElementById("newUser").appendChild(a);
-    }
-        
-    else {
+    if (nameValidations(n) && passwordValidation(p) && emailValidation(e)) {
         newUser = { "id": 0, "name": n, "password": p, "email": e };
 
-        alert(newUser.name);
         const res = await fetch("https://localhost:44368/Api/User",
             {
                 headers: { "content-type": "application/json" },
@@ -55,22 +42,45 @@ async function newUser() {
             alert("something went wrong");
             throw new Error("failed, please try later");
         }
-    }
-}
 
-async function checkPassword() {
-    const password = document.getElementById("password").value;
-    let url = "https://localhost:44368/Api/Password";
-    const res = await fetch(url,
-        {
-            headers: { "content-type": "application/json" },
-            method: 'POST',
-            body: JSON.stringify(password)
-        })
-    if (res.ok) {
-        let res2 = await res.json();
-        alert(res2);
     }
-    return res2;
-    
+    function nameValidations (name){
+        if (name.length > 100 || name.length < 2) {
+            document.getElementById("nameValidation").innerText = "שם חייב להיות בין 2 ל100 תווים"
+            return false;
+        }
+        return true;
+    }
+   function emailValidation(email) {
+        if (email.indexOf("@") < 0 || email.indexOf(".") < email.indexOf("@") + 2) {
+            document.getElementById("emailValidation").innerText = "כתובת מייל לא חוקית"
+            return false;
+        }
+        return true;
+    }
+    async function passwordValidation(password) {
+        var score = await checkPassword(password);
+         if (await score < 3) {
+            document.getElementById("passwordValidation").innerText = "סיסמא לא חזקה"
+            return false;
+        }
+        return true;
+    }
+
+    async function checkPassword() {
+        const password = document.getElementById("password").value;
+        let url = "https://localhost:44368/Api/Password";
+        const res = await fetch(url,
+            {
+                headers: { "content-type": "application/json" },
+                method: 'POST',
+                body: JSON.stringify(password)
+            })
+        if (res.ok) {
+            let res2 = await res.json();
+            alert(res2);
+        }
+        return res2;
+
+    }
 }

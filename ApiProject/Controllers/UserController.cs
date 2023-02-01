@@ -31,7 +31,8 @@ namespace ApiProject.Controllers
         public async Task<ActionResult<IEnumerable<UserWithOutPasswordDTO>>> Get([FromQuery]string email, [FromQuery] string password)
         {
 
-         //throw new NotImplementedException();
+
+         
 
           _logger.LogInformation("tried to login");
             User? theUser = await _userService.GetUser(email, password);

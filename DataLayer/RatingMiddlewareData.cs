@@ -20,7 +20,7 @@ namespace DataLayer
         }
         public void save(Rating rating)
         {
-            string _connctionString = this.config.GetConnectionString("home");
+            string _connctionString = this.config.GetConnectionString("school");
             string queary = "insert into RATING (METHOD ,HOST ,PATH ) values(@method, @host, @path) ";
             using (SqlConnection connection = new SqlConnection(_connctionString))
             using (SqlCommand command = new SqlCommand(queary, connection))
@@ -33,10 +33,12 @@ namespace DataLayer
                 command.Parameters["@host"].Value = rating.Host;
                 command.Parameters.Add("@path", SqlDbType.NVarChar);
                 command.Parameters["@path"].Value = rating.Path;
-                //command.Parameters.Add("@referer", SqlDbType.NVarChar);
-                //command.Parameters["@referer"].Value = referer;
-                //command.Parameters.Add("@date", SqlDbType.NVarChar);
-                //command.Parameters["@date"].Value = rating.RecordDate;
+                command.Parameters.Add("@referer", SqlDbType.NVarChar);
+                command.Parameters["@referer"].Value = rating.Referer;
+                command.Parameters.Add("@userAgent", SqlDbType.NVarChar);
+                command.Parameters["@userAgent"].Value = rating.UserAgent;
+                command.Parameters.Add("@recordDate", SqlDbType.NVarChar);
+                command.Parameters["@recordDate"].Value = rating.RecordDate;
 
                 command.Connection.Open();
                 command.ExecuteNonQuery();

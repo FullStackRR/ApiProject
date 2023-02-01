@@ -24,11 +24,12 @@ namespace ApiProject.Middlware
             string method = httpContext.Request.Method;
             string host = httpContext.Request.Host.ToString();
             string path = httpContext.Request.Path;
-            
-            DateTime recordDate = new DateTime();
+            string referer = httpContext.Request.Headers["Referer"];
+            string userAgent = httpContext.Request.Headers["User-Agent"];
+            DateTime recordDate = DateTime.Now;
 
             //string referer = httpContext.Request.;
-            Rating rating = new Rating() { Method = method, Host = host, Path = path,RecordDate=recordDate };
+            Rating rating = new Rating() { Method = method, Host = host, Path = path,RecordDate=recordDate, UserAgent =userAgent, Referer = referer,  };
             _ratingService.SaveDetails(rating);
 
             return _next(httpContext);

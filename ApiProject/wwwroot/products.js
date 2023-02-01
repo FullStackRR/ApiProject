@@ -29,19 +29,18 @@ drawCategories = (ans2) => {
     for (var i = 0; i < ans2.length; i++) {
         drawCategory(ans2[i])
     }
-    console.log(ans2[1].name)
 }
 
 drawProduct = (product) => {
     var temp = document.getElementById("temp-card");
-    var clone = temp.content.cloneNode(true)
-    clone.querySelector("h1").innerText = product.name
-    clone.querySelector(".category").innerText = product.categoryName//name!!!
-    clone.querySelector(".description").innerText = product.description
-    clone.querySelector(".price").innerText = product.price +"₪"
-    clone.querySelector("img").src = `../img/${product.imgUrl}`
-    clone.querySelector("button").addEventListener("click", () => addToBag(product))
-    document.body.appendChild(clone)
+    var clone = temp.content.cloneNode(true);
+    clone.querySelector("h1").innerText = product.name;
+    clone.querySelector(".category").innerText = product.categoryName;
+    clone.querySelector(".description").innerText = product.description;
+    clone.querySelector(".price").innerText = product.price + "₪";
+    clone.querySelector("img").src = `../img/${product.imgUrl}`;
+    clone.querySelector("button").addEventListener("click", () => addToBag(product));
+    document.body.appendChild(clone);
 
 }
 removeProducts = () => {   
