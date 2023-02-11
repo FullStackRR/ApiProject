@@ -24,10 +24,11 @@ namespace ApiProject.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public  async Task<Order> Post([FromBody] OrderDTO orderDTO) 
+        public  async Task<OrderDTO> Post([FromBody] OrderDTO orderDTO) 
         {
             Order order = _mapper.Map<OrderDTO, Order>(orderDTO);
-              return await this._orderService.Post(order);
+            OrderDTO orderToReturn= _mapper.Map<Order, OrderDTO>(await this._orderService.Post(order));
+            return orderToReturn;
         }
 
       

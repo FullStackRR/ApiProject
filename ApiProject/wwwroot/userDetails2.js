@@ -1,8 +1,8 @@
 ﻿
 let item;
-
+var details;
 function initDetails() {
-    var details = JSON.parse(sessionStorage.getItem('details'));
+    details = JSON.parse(sessionStorage.getItem('details'));
     var name = details[0].name;
     var email = details[0].email;
     var password = "הכנס סיסמא חדשה ";

@@ -22,7 +22,7 @@ drawOrderItem = (product, productIndex) => {
 removeOrderItems = () => {
     let orderItems = document.getElementsByClassName("item-row");
     for (var i = orderItems.length - 1; i >= 0; i--) {
-        document.getElementsByTagName("tbody")[0].appendChild(clone)    }
+        document.getElementsByTagName("tbody")[0].removeChild(orderItems[i])   }
 
 }
 deleteItem = (productIndex) => {
